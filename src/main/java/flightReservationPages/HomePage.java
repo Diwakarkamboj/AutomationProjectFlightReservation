@@ -1,6 +1,8 @@
 package flightReservationPages;
 
 
+
+import flightReservation.utils.Config;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,11 +12,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.devtools.idealized.Javascript;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
-
-import dev.failsafe.internal.util.Assert;
+import org.testng.Assert;
 
 public class HomePage {
 
@@ -24,18 +23,21 @@ public class HomePage {
 		this.driver = new ChromeDriver();
 	}
 	
+	
 	public void invokeBrowser() {
-		this.driver.get("https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html");
+        String flightReservationUrl = Config.get("flightReservation.url");
+		this.driver.get(flightReservationUrl);
 		this.driver.manage().window().maximize();
 	}
 
+	
 	public void vfyPageFormTitle() {
 		String pageTitleLocator = locators().get("pageTitle");
 		WebElement formName = this.driver.findElement(By.xpath(pageTitleLocator));
 		String expectedFormTitle = formName.getText();
 		String actualFormTitle = "Customer Registration";
-		Assert.isTrue(true, actualFormTitle, expectedFormTitle);
-		// Assert.assertEquals();
+		Assert.assertEquals(actualFormTitle, expectedFormTitle);
+		
 
 	}
 
@@ -43,8 +45,7 @@ public class HomePage {
 		String expectedPageTitle = this.driver.getTitle();
 		String actualPageTitle = "Book Your Flights";
 //		System.out.println("Page title is "+ expectedPageTitle);
-		Assert.isTrue(true, actualPageTitle, expectedPageTitle);
-		// Assert.assertEquals();
+		Assert.assertEquals(actualPageTitle, expectedPageTitle);
 
 	}
 	
