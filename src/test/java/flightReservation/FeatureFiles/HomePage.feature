@@ -16,6 +16,7 @@ Feature: Verify Home Page fields and button
     Then Enter "New York" in state name
     Then Enter "3006A" ZIP code
     Then Click on register button
+    Then I click on Go To Flights Search button
     #Then I close the browser
 
   #@tag2

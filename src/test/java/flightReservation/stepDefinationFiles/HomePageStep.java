@@ -1,12 +1,22 @@
 package flightReservation.stepDefinationFiles;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
 import flightReservationPages.HomePage;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class HomePageStep {
-	
-	HomePage page1 = new HomePage();
+	private WebDriver driver; 
+	private HomePage page1;
+		
+	@Before
+	public void setup() {
+		this.driver = new ChromeDriver();
+		this.page1 = new HomePage(driver);	
+	}
 	
 	@When("I Open Customer Registration page")
 	public void openCRPage() {

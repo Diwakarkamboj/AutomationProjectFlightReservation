@@ -2,7 +2,7 @@ package flightReservationPages;
 
 
 
-import flightReservation.utils.Config;
+import flightReservation.absctractbaseclass.BasePage;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,23 +11,13 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
-public class HomePage {
-
-	WebDriver driver;
-
-	public HomePage() {
-		this.driver = new ChromeDriver();
-	}
+public class HomePage extends BasePage{
 	
-	
-	public void invokeBrowser() {
-        String flightReservationUrl = Config.get("flightReservation.url");
-		this.driver.get(flightReservationUrl);
-		this.driver.manage().window().maximize();
+	public HomePage(WebDriver driver) {
+		super(driver);
 	}
 
 	
