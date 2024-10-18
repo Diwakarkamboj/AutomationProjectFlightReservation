@@ -4,7 +4,7 @@ Feature: Verify Home Page fields and button
   @Regformtile
   Scenario: Verify the Page title as Book Your Flights
     When I Open Customer Registration page
-    Then Verify that page title is same as expected
+    Then Verify that page title is "Book Your Flights"
     Then Verify that form title is same as expected
     Then Enter "JOHN" in first name
     Then Enter "DOE" in last name

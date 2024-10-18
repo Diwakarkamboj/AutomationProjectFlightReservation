@@ -1,42 +1,41 @@
 package flightReservation.stepDefinationFiles;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
+import org.testng.Assert;
+
+import flightReservation.DriverFactory.DriverFactory;
 import flightReservationPages.HomePage;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class HomePageStep {
-	private WebDriver driver; 
-	private HomePage page1;
+
+	private HomePage page1 = new HomePage(DriverFactory.getDriver());
 		
-	@Before
-	public void setup() {
-		this.driver = new ChromeDriver();
-		this.page1 = new HomePage(driver);	
-	}
 	
 	@When("I Open Customer Registration page")
 	public void openCRPage() {
-		page1.invokeBrowser();
+		
 	}
 	
-	@Then("Verify that page title is same as expected")
-	public void vfyHomePageTitle() {
-		page1.vfyPageTitle();
-		page1.setTime();
+	@Then("Verify that page title is {string}")
+	public void vfyHomePageTitle(String expectedTitleName) {
+		String title = page1.vfyPageTitle();
+		System.out.println(title);
+		Assert.assertTrue(title.contains(expectedTitleName));
 	}
 	
-	@Then("Verify that form title is same as expected")
-	public void vfyPageFormTitle() {
-		page1.vfyPageFormTitle();
+	@Then("Verify that form title {string}")
+	public void vfyPageFormTitle(String expectedFormTitle) {
+		String formTitle = page1.vfyPageFormTitle();
+		System.out.println(formTitle);
+		Assert.assertTrue(formTitle.contains(expectedFormTitle));
 	}
 	
 	@Then("Enter {string} in first name")
 	public void setfirstName(String firstName) {
 		page1.setFirstNameField(firstName);
+		
 	}
 	
 	@Then("Enter {string} in last name")
@@ -81,12 +80,6 @@ public class HomePageStep {
 	@Then("Click on register button")
 	public void clkRegBtn() {
 		page1.registerBtn();
-	}
-	
-	
-	@Then("I close the browser")
-	public void closeBr() {
-		page1.closeBrowser();
 	}
 	
 

@@ -1,26 +1,28 @@
 package flightReservation.utils;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Properties;
 
 public class Config {
 
-	private static final String DEFAULT_PROPERTIES = "config/default.properties";
-	private static Properties properties = new Properties();
-	
-	
-	static {
-		try
-		{
-			properties.load(Config.class.getClassLoader().getResourceAsStream(DEFAULT_PROPERTIES));	
-		}catch(Exception e)
-		{
+	private Properties properties;
+
+	public Properties init_prop() {
+		properties = new Properties();
+		try {
+			FileInputStream propVal = new FileInputStream("./src/main/resources/config/default.properties");
+			properties.load(propVal);
+		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public static String get(String key) {
-		 return properties.getProperty(key);
-	}
-	
-}
 
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return properties;
+	}
+
+}

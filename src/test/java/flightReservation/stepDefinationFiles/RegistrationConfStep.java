@@ -1,24 +1,18 @@
 package flightReservation.stepDefinationFiles;
 
 
-import org.openqa.selenium.WebDriver;
-
+import flightReservation.DriverFactory.DriverFactory;
 import flightReservationPages.RegistrationConfirmationPage;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.Then;
 
 public class RegistrationConfStep {
 	
-	private WebDriver driver; 
-	private RegistrationConfirmationPage page2;
+	private RegistrationConfirmationPage page2 = new RegistrationConfirmationPage(DriverFactory.getDriver());
 	
 	
-	@Before
-	public void setup() {
-		this.page2 = new RegistrationConfirmationPage(driver);
-	}
+	
 	@Then("I click on Go To Flights Search button")
-	public void clkGoToSrchFlightBtn() {
+	public void clkGoToSrchFlightBtn() throws InterruptedException {
 		page2.clkGoToFlightsSrchBtn();
 	}
 

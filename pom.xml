@@ -49,6 +49,11 @@
 			<version>5.9.1</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>SeleniumPractise</groupId>
+			<artifactId>SeleniumPractise</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
   </dependencies>
 
   <build>

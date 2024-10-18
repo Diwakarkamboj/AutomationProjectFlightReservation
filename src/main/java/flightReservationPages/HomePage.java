@@ -2,11 +2,9 @@ package flightReservationPages;
 
 
 
-import flightReservation.absctractbaseclass.BasePage;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,29 +12,27 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
-public class HomePage extends BasePage{
+
+public class HomePage{
+	
+	private WebDriver driver;
 	
 	public HomePage(WebDriver driver) {
-		super(driver);
+		this.driver = driver;
 	}
 
 	
-	public void vfyPageFormTitle() {
+	public String vfyPageFormTitle() {
 		String pageTitleLocator = locators().get("pageTitle");
 		WebElement formName = this.driver.findElement(By.xpath(pageTitleLocator));
 		String expectedFormTitle = formName.getText();
-		String actualFormTitle = "Customer Registration";
-		Assert.assertEquals(actualFormTitle, expectedFormTitle);
 		
+		return expectedFormTitle;
 
 	}
 
-	public void vfyPageTitle() {
-		String expectedPageTitle = this.driver.getTitle();
-		String actualPageTitle = "Book Your Flights";
-//		System.out.println("Page title is "+ expectedPageTitle);
-		Assert.assertEquals(actualPageTitle, expectedPageTitle);
-
+	public String vfyPageTitle() {
+		return this.driver.getTitle();
 	}
 	
 	public void setFirstNameField(String firstName) {
@@ -121,16 +117,7 @@ public class HomePage extends BasePage{
 		
 	}
 
-	@SuppressWarnings("deprecation")
-	public void setTime() {
-		this.driver.manage().timeouts().implicitlyWait(1000, TimeUnit.MICROSECONDS);
-	}
-
-	public void closeBrowser() {
-		this.driver.close();
-	}
-
-	public Map<String, String> locators() {
+	private Map<String, String> locators() {
 
 		Map<String, String> locatorsMap = new HashMap<String, String>();
 		
