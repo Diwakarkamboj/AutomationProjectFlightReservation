@@ -7,9 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import flightReservation.DriverFactory.DriverFactory;
-
-
 public class RegistrationConfirmationPage {
 
 	private WebDriver driver;
