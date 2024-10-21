@@ -19,6 +19,8 @@ Feature: Verify Home Page fields and button
     Then Check that page name is "Registration Confirmation"
     And I click on Go To Flights Search button
     Then Check that "Flight Search" page is displayed
+    And Check that default trip selected is round trip
+    Then Select "One Way" trip type radio button
 
   #@tag2
   #Scenario Outline: Title of your scenario outline

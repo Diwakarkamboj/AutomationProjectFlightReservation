@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+
 public class FlightSearchPage {
 		
 	private WebDriver driver;
@@ -25,22 +26,36 @@ public class FlightSearchPage {
 		return pageNameTitle;
 	}
 	
-	public void selectTrip() {
-		String frstRadioBtnLocator = getFlightSearchPageLocators().get("firstRadioBtn");
-		WebElement frstRadioBtn = this.driver.findElement(By.xpath(frstRadioBtnLocator));
-		Boolean oneWayRadioBtn = frstRadioBtn.isEnabled();
+	public boolean defaultTripCheck() {
+		String roundtripBtnLocator = getFlightSearchPageLocators().get("roundtripRadioBtn");
+		WebElement roundtripBtn = this.driver.findElement(By.xpath(roundtripBtnLocator));
+		
+		Boolean roundTripRadioBtnisEnabled = roundtripBtn.isEnabled();
+		return roundTripRadioBtnisEnabled;
 		
 	}
 	
-	
-	
-	
+	public void selectTrip(String selectedOption) {
+		String onewayRadioBtnLocator = getFlightSearchPageLocators().get("onewayRadioBtn");
+		WebElement onewayRadioBtn = this.driver.findElement(By.xpath(onewayRadioBtnLocator));
+		String roundtripBtnLocator = getFlightSearchPageLocators().get("roundtripRadioBtn");
+		WebElement roundtripBtn = this.driver.findElement(By.xpath(roundtripBtnLocator));
+
+		
+		if(selectedOption.equalsIgnoreCase("One Way")) {
+			onewayRadioBtn.click();
+		}
+		else if(selectedOption.equalsIgnoreCase("Round Trip")) {
+			roundtripBtn.click();
+		}
+		
+	}	
 	
 	public Map<String, String> getFlightSearchPageLocators() {
 		Map<String, String> locatorsMap = new HashMap<String, String>();
 		locatorsMap.put("flightSearch", "//*[text()='Flight Search']");
-		locatorsMap.put("firstRadioBtn", getDynamicLocators("oneway"));
-		locatorsMap.put("secondRadioBtn",  getDynamicLocators("twoway"));
+		locatorsMap.put("onewayRadioBtn", getDynamicLocators("oneway"));
+		locatorsMap.put("roundtripRadioBtn",  getDynamicLocators("twoway"));
 		locatorsMap.put("passangerField", getDynamicLocators("passengers"));
 		locatorsMap.put("passangersDropDown", "//*[@id='passengers']//option");
 		locatorsMap.put("departFromField", getDynamicLocators("depart-from"));
