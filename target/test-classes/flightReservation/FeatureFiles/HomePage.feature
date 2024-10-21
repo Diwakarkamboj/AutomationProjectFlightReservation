@@ -16,8 +16,9 @@ Feature: Verify Home Page fields and button
     Then Enter "New York" in state name
     Then Enter "3006A" ZIP code
     Then Click on register button
-    Then I click on Go To Flights Search button
-    #Then I close the browser
+    Then Check that page name is "Registration Confirmation"
+    And I click on Go To Flights Search button
+    Then Check that "Flight Search" page is displayed
 
   #@tag2
   #Scenario Outline: Title of your scenario outline
