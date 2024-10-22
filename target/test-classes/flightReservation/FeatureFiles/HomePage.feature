@@ -21,6 +21,11 @@ Feature: Verify Home Page fields and button
     Then Check that "Flight Search" page is displayed
     And Check that default trip selected is round trip
     Then Select "One Way" trip type radio button
+    And Select "Two" passenger to book a flight
+    Then Select departure as "London" city
+    And Select arrival as "New York" city
+    Then Check default service class selected is First class
+    And Select "Business" as service class for this flight
 
   #@tag2
   #Scenario Outline: Title of your scenario outline
