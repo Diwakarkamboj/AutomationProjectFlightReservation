@@ -7,6 +7,7 @@ import java.util.Map;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
 public class FlightSearchPage {
@@ -125,29 +126,25 @@ public class FlightSearchPage {
 		WebElement economyClassBtn = this.driver.findElement(By.xpath(economyClassBtnLocator));
 		String businessClassBtnLocator = getFlightSearchPageLocators().get("business");
 		WebElement businessClassBtn = this.driver.findElement(By.xpath(businessClassBtnLocator));
-
-		// Remove any extra double quotes from the input string
-		serviceSelected = serviceSelected.replace("\"", "");
-
+		
+		
 		if (serviceSelected.equalsIgnoreCase("First")) {
-			firstClassBtn.click();
+			new Actions(this.driver).moveToElement(firstClassBtn).click().build().perform();
 		} else if (serviceSelected.equalsIgnoreCase("Economy")) {
-			economyClassBtn.click();
+			new Actions(this.driver).moveToElement(economyClassBtn).click().build().perform();
 		}
 		else if (serviceSelected.equalsIgnoreCase("Business")) {
-			businessClassBtn.click();
+			new Actions(this.driver).moveToElement(businessClassBtn).click().build().perform();
 		}
 
 	}
-
 	
-	
-	
-	
-	
-	
-	
-	
+	public void clkSrchFlightsBtn() {
+		String searchFlightsBtnLocator = getFlightSearchPageLocators().get("searchFlightsBtn");
+		WebElement searchFlightsBtn = this.driver.findElement(By.xpath(searchFlightsBtnLocator));
+		
+		new Actions(this.driver).moveToElement(searchFlightsBtn).click().build().perform();
+	}
 	
 
 	public Map<String, String> getFlightSearchPageLocators() {

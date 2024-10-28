@@ -25,7 +25,19 @@ Feature: Verify Home Page fields and button
     Then Select departure as "London" city
     And Select arrival as "New York" city
     Then Check default service class selected is First class
-    And Select "Business" as service class for this flight
+    And Select "Economy" as service class for this flight
+    Then Click on search flights button
+    Then Verify that search flights title is "Select Flights"
+    Then Verify that departure flight table shows correct row names
+    Then Verify that arrival flight table shows correct row names
+    Then Select "Economy" class for "Emirates" flight for departure
+    Then Select "Economy" class for "British Airways" flight for arrival
+    And Click on confirm flights button
+    
+    
+    
+    
+    
 
   #@tag2
   #Scenario Outline: Title of your scenario outline

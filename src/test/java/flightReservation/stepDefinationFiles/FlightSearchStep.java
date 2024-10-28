@@ -1,5 +1,6 @@
 package flightReservation.stepDefinationFiles;
 
+
 import org.testng.Assert;
 
 import flightReservation.DriverFactory.DriverFactory;
@@ -52,6 +53,11 @@ public class FlightSearchStep {
 	@And("Select {string} as service class for this flight")
 	public void selectServiceClass(String serviceSelected){
 		page3.selectServiceClass(serviceSelected);
+	}
+	
+	@Then("Click on search flights button")
+	public void clkSearchFlightsBtn() {
+		page3.clkSrchFlightsBtn();
 	}
 
 }
