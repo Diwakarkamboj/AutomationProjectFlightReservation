@@ -40,8 +40,27 @@ Feature: Verify Home Page fields and button
     Then Verify that flight total amount text is "Total Price"
     
     
+  @Regformtile1
+  Scenario Outline: Verify the Flight Booking Form
+    When I Open Customer Registration page
+    Then Verify that page title is "Book Your Flights"
+    Then Verify that form title "Customer Registration"
+    Then Enter <name> in first name
+    Then Enter <lastname> in last name
+    Then Enter <email> in email field
+    Then Enter "John*@**12" in password field
+    Then Enter "603, Little LaTrobe Street" in street name
+    Then Enter <city> in city name
+    Then Check total displayed states in drop-downs are "51" 
+    Then Enter <state> in state name
+    Then Enter <zip> ZIP code
+    Then Click on register button
     
-    
+    Examples:
+    | name    | lastname| email 						 | city 			 | state     | zip    |
+    | "Rahul" | "Kumar" | "rahul@gmail.com"  | "Karnal" 	 | "Florida" | "3004" |
+    | "Ram"   | "Kumar" | "ram@gmail.com"    | "Las Vegas" | "Delaware"| "3123" |
+    | "Shyam" | "Kumar" | "shyam@gmail.com"  | "Dallas" 	 | "Texas"	 | "44AC" |
     
 
   #@tag2

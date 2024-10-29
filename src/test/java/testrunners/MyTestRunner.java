@@ -8,6 +8,7 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
     features = {"src/test/resources/flightReservation/FeatureFiles"},
     glue = {"flightReservation/stepDefinationFiles", "AppHooks"},
+    tags = "@Regformtile1",
     plugin = {
         "pretty"
     }
